@@ -20,17 +20,17 @@ export default class Select extends Component {
       )
     });
   }
+  componentDidUpdate() {
+    this.refs.SelectedLocation.innerHTML = this.refs.selectLoc.value;
+  }
   render() {
     return (
       <React.Fragment>
         Location:
         <select name="location" ref="selectLoc" onChange={this.handleSelect}>
-          <option
-            value={this.state.defaultSelect}
-            dangerouslySetInnerHTML={{
-              __html: decodeURIComponent(this.state.defaultSelect)
-            }}
-          />
+          <option value={this.state.defaultSelect}>
+            {this.state.defaultSelect}
+          </option>
           {this.state.selectOptions.map((el, index) => {
             if (el !== this.state.defaultSelect) {
               return (
@@ -41,6 +41,7 @@ export default class Select extends Component {
             }
           })}
         </select>
+        <span ref="SelectedLocation" />
       </React.Fragment>
     );
   }
