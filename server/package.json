@@ -1,0 +1,41 @@
+{
+  "name": "shopping-app-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node bin/app C:\\Users\\Hovo\\Desktop\\ssl\\privateKey.key C:\\Users\\Hovo\\Desktop\\ssl\\certificate.crt",
+    "lint": "eslint **/*.js",
+    "lint-fix": "eslint **/*.js --fix"
+  },
+  "author": "Simply Technologies",
+  "license": "ISC",
+  "dependencies": {
+    "babel-plugin-module-resolver": "^3.0.0",
+    "babel-register": "^6.9.0",
+    "babel-runtime": "^6.9.2",
+    "bcryptjs": "^2.4.3",
+    "bluebird": "^3.5.0",
+    "body-parser": "^1.15.2",
+    "bson": "^1.0.4",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.14.0",
+    "express-session": "^1.15.5",
+    "express-validator": "^4.1.0",
+    "glob": "^7.0.5",
+    "lodash": "^4.17.4",
+    "mongoose": "^4.5.2",
+    "morgan": "^1.7.0",
+    "nodemailer": "^4.1.0",
+    "pem": "^1.10.0",
+    "uuid": "^3.1.0"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.9.0",
+    "babel-register": "^6.9.0",
+    "eslint": "^4.6.1",
+    "eslint-config-airbnb-base": "^12.0.0",
+    "eslint-plugin-import": "^2.7.0"
+  }
+}
