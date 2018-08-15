@@ -5,11 +5,17 @@ export default class Select extends Component {
     defaultSelect: "England",
     selectOptions: ["England", "Germany", "Italy", "other"]
   };
+  filter;
   handleSelect = () => {
     this.setState({
       defaultSelect: this.refs.selectLoc.value
     });
     this.props.history.push("ordersToMe?location=" + this.refs.selectLoc.value);
+  };
+  createMarkup = () => {
+    return {
+      __html: this.state.defaultSelect
+    };
   };
   componentDidMount() {
     this.setState({
@@ -19,9 +25,6 @@ export default class Select extends Component {
         )
       )
     });
-  }
-  componentDidUpdate() {
-    this.refs.SelectedLocation.innerHTML = this.refs.selectLoc.value;
   }
   render() {
     return (
@@ -41,7 +44,10 @@ export default class Select extends Component {
             }
           })}
         </select>
-        <span ref="SelectedLocation" />
+        <span
+          ref="SelectedLocation"
+          dangerouslySetInnerHTML={this.createMarkup()}
+        />
       </React.Fragment>
     );
   }
