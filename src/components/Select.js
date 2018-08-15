@@ -12,11 +12,17 @@ export default class Select extends Component {
     });
     this.props.history.push("ordersToMe?location=" + this.refs.selectLoc.value);
   };
-  createMarkup = () => {
-    return {
-      __html: this.state.defaultSelect
-    };
+  exceptImgTag = source => {
+    if (source.includes("<img")) {
+      return "Do not click on suspicious links";
+    }
+    return source;
   };
+  componentDidUpdate() {
+    this.refs.SelectedLocation.innerHTML = this.exceptImgTag(
+      this.state.defaultSelect
+    );
+  }
   componentDidMount() {
     this.setState({
       defaultSelect: decodeURIComponent(
@@ -44,10 +50,7 @@ export default class Select extends Component {
             }
           })}
         </select>
-        <span
-          ref="SelectedLocation"
-          dangerouslySetInnerHTML={this.createMarkup()}
-        />
+        <span ref="SelectedLocation" />
       </React.Fragment>
     );
   }
