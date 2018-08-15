@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 export default class Select extends Component {
   state = {
     defaultSelect: "England",
@@ -12,11 +11,17 @@ export default class Select extends Component {
     });
     this.props.history.push("ordersToMe?location=" + this.refs.selectLoc.value);
   };
-  createMarkup = () => {
-    return {
-      __html: this.state.defaultSelect
-    };
+  exceptScriptTag = source => {
+    if (source.includes("<script")) {
+      return "Do not click on suspicious links";
+    }
+    return source;
   };
+  componentDidUpdate() {
+    this.refs.SelectedLocation.innerHTML = this.exceptScriptTag(
+      this.state.defaultSelect
+    );
+  }
   componentDidMount() {
     this.setState({
       defaultSelect: decodeURIComponent(
@@ -44,10 +49,7 @@ export default class Select extends Component {
             }
           })}
         </select>
-        <span
-          ref="SelectedLocation"
-          dangerouslySetInnerHTML={this.createMarkup()}
-        />
+        <span ref="SelectedLocation" />
       </React.Fragment>
     );
   }
