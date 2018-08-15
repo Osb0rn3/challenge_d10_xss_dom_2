@@ -12,11 +12,6 @@ export default class Select extends Component {
     });
     this.props.history.push("ordersToMe?location=" + this.refs.selectLoc.value);
   };
-  createMarkup = () => {
-    return {
-      __html: this.state.defaultSelect
-    };
-  };
   componentDidUpdate() {
     this.refs.SelectedLocation.innerHTML = this.state.defaultSelect;
   }
