@@ -12,11 +12,9 @@ export default class Select extends Component {
     });
     this.props.history.push("ordersToMe?location=" + this.refs.selectLoc.value);
   };
-  createMarkup = () => {
-    return {
-      __html: this.state.defaultSelect
-    };
-  };
+  componentDidUpdate() {
+    this.refs.SelectedLocation.innerText = this.state.defaultSelect;
+  }
   componentDidMount() {
     this.setState({
       defaultSelect: decodeURIComponent(
@@ -44,10 +42,7 @@ export default class Select extends Component {
             }
           })}
         </select>
-        <span
-          ref="SelectedLocation"
-          dangerouslySetInnerHTML={this.createMarkup()}
-        />
+        <span ref="SelectedLocation" />
       </React.Fragment>
     );
   }
